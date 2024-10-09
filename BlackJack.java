@@ -1,5 +1,43 @@
+//Skylee Blaine
+//Tiffany Allen
+//Isaac Halpin
+//Cristan Galindo
+
 import java.util.Random;
 import java.util.Scanner;
+
+// ADD CARD CLASS HERE (above BlackJack class)
+class Card{
+  // private variables here:
+  private int value;
+  private String suit;
+  private String rank;
+
+  // constructor: pulls a new card to play
+  public Card(int value, String suit, String rank) {
+    this.value = value;
+    this.suit = suit;
+    this.rank = rank;
+  }
+// retreieves the numerical value of card
+  public int getValue() {
+    return value;
+  } 
+//retreieves the suit of the card
+  public String getSuit() {
+    return suit;
+  }
+//retreieves the rank of the card
+  public String getRank() {
+    return rank;
+  }
+
+// prints out the card for the player
+  public String toString() {
+    return rank + " of " + suit;
+  }
+
+}
 
 
 public class BlackJack {
@@ -34,14 +72,14 @@ public class BlackJack {
 
       //fix dealerTurn
       dealerTotal = dealerTurn(dealerTotal);
-   
+
       determineWinner(playerTotal, dealerTotal);
       //added
       //asks player if they want to play again
       System.out.println("Would you like to play another hand?");
-     
+
       playerDecision = scanner.nextLine().toLowerCase();
-      
+
       while(!(playerDecision.equals("no") || (playerDecision.equals("yes")) )){
         System.out.println("Invalid action. Please type 'hit' or 'stand'.");
         playerDecision = scanner.nextLine().toLowerCase();
@@ -64,7 +102,7 @@ public class BlackJack {
       int val = 10;
       if(rankIndex < 9)
         val = Integer.parseInt(RANKS[rankIndex]);
-      
+
       cards[i] = new Card( val, SUITS[suitIndex], RANKS[rankIndex]);
       suitIndex++;
       if (suitIndex == 4) {
@@ -89,11 +127,11 @@ public class BlackJack {
     int card2 = dealCard();*/
     Card card1 = dealCard();
     Card card2 = dealCard();
-    
+
     //System.out.println("Your cards: " + RANKS[card1] + " of " + SUITS[card1 / 13] + " and " + RANKS[card2] + " of " + SUITS[card2 / 13]);
     System.out.println("Your cards: " + card1.getRank() + " of " + card1.getSuit() + " and " + card2.getRank() + " of " + card2.getSuit());
-        
-        
+
+
     //return cardValue(card1) + cardValue(card2);
     return card1.getValue() + card2.getValue();
   }
@@ -157,3 +195,4 @@ public class BlackJack {
     return card < 9 ? card + 2 : 10;
   }
 }
+
